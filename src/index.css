@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #99cc66;
+  --secondary-color: #254222;
+  --accent-color: #ece2b1;
+  --bg-color: #000000;
+  --color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: var(--color);
+  background-color: var(--bg-color);
+}
+
+.tech-box {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  mask-image: url("/icons/code.svg");
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+
+  -webkit-mask-image: url("/icons/code.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+}
