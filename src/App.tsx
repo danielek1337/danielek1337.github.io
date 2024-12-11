@@ -6,8 +6,7 @@ import Layout from "./layouts/Layout";
 import Lenis from "lenis";
 
 // TODO
-// określić design dla sekcji z projektami mobilka/desktop
-// prawdopodobnie coś pokroju opis po lewej, po prawej zdjęcie i coś może z rozwinięciem ale raczej zbyteczne bo mało info
+// ogarnac czemu animacje na mobilce są polagowane
 // dodać burger menu i stylowanie pod mobilke
 //
 // TODO

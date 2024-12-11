@@ -41,7 +41,7 @@ export default function ProjectBox({
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.4, ease: "easeOut" },
+      transition: { duration: 0.4, type: "spring" },
     },
   };
 
@@ -63,28 +63,30 @@ export default function ProjectBox({
       initial="hidden"
       whileInView="visible"
       exit="hidden"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.3 }}
       variants={variants}
     >
-      <div className="border px-2 pb-2 backdrop-blur-sm rounded-2xl flex-shrink-0 ">
-        <h3 className="text-2xl font-bold text-center py-2">{name}</h3>
+      <div className="border px-2 pb-2 backdrop-blur-sm rounded-2xl flex-[0.6] ">
+        <h3 className="xl:text-2xl text-xl font-bold text-center py-2">
+          {name}
+        </h3>
         <img
           src={img}
           alt={`Project ${id} image`}
-          className="w-auto max-h-[500px] rounded-2xl"
+          className="w-[100%] rounded-xl"
         />
       </div>
-      <div className="text-lg flex flex-col items-center justify-center relative">
-        <p className="font-bold text-justify z-10 mt-auto xl:py-0 pt-5 pb-4">
+      <div className="xl:text-lg text-sm flex flex-col items-center justify-center relative flex-[0.4]">
+        <p className="font-medium text-justify z-10 mt-auto xl:py-0 pt-5 pb-4">
           {description}
         </p>
-        <p className="xl:pt-10 z-10">Technologies used: </p>
+        <p className="xl:pt-10 z-10 font-thin">Technologies used: </p>
         <motion.ul
           className="flex xl:gap-10 gap-x-10 flex-wrap my-auto z-10 justify-center font-bold"
           initial="hidden"
           whileInView="visible"
           exit="hidden"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={descriptionVariant}
         >
           {technologies?.map((item, index) => (
@@ -94,11 +96,12 @@ export default function ProjectBox({
           ))}
         </motion.ul>
         <motion.div
-          className="tech-box absolute -z-0 top-2/4 w-[400px] xl:h-1/2 opacity-60"
+          className="tech-box absolute -z-0 top-2/4 w-[350px] xl:h-1/2 "
           initial="hidden"
           whileInView="visible"
           exit="hidden"
           variants={bgVariant}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ ease: "easeOut", duration: 2 }}
         ></motion.div>
       </div>
