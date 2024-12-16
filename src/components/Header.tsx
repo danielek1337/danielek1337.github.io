@@ -8,7 +8,7 @@ export default function Header() {
   const lineHeight = useTransform(scrollY, [500, 600], ["0px", "400px"]);
 
   return (
-    <header className="lg:bg-hero bg-heroMobile h-screen bg-cover bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
+    <header className="lg:bg-hero bg-heroMobile h-screen bg-contain bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
       <motion.div
         className="absolute m-auto top-1/3 left-0 right-0 w-fit backdrop-blur-sm p-4 rounded-3xl shadow-projectCardShadow"
         style={{ y: yPosition }}
@@ -23,10 +23,10 @@ export default function Header() {
           type: "spring",
         }}
       >
-        <h2 className="text-shadow-lg xl:text-4xl text-2xl font-bold leading-loose">
+        <h2 className="text-shadow-lg xl:text-4xl text-2xl font-bold xl:pb-2 ">
           Welcome to my portfolio site.
         </h2>
-        <h3 className="text-shadow-lg xl:text-2xl text-xl font-bold">
+        <h3 className="text-shadow-lg xl:text-2xl text-lg font-medium">
           I'm Daniel, frontend developer.
         </h3>
       </motion.div>

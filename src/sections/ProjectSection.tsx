@@ -1,17 +1,9 @@
-import { useRef } from "react";
 import ProjectBox from "../components/projects/ProjectBox";
 import { projectsData } from "../data/projectsData";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function ProjectSection() {
-  const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start end", "end start"],
-  });
-
   return (
-    <section id="projects" ref={scrollRef}>
+    <section id="projects">
       {projectsData.map((item, index) => (
         <ProjectBox
           key={index}
