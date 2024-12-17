@@ -8,6 +8,7 @@ export default {
       backgroundImage: {
         hero: "url('/bg-image.jpeg')",
         heroMobile: "url('/bg-image-mobile.jpeg')",
+        gradient: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
       },
       boxShadow: {
         heroBoxShadow:

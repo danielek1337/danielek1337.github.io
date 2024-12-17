@@ -4,9 +4,6 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #99cc66;
-  --secondary-color: #254222;
-  --accent-color: #ece2b1;
   --bg-color: #000000;
   --color: #ffffff;
 }
@@ -37,6 +34,22 @@ body {
 
   -webkit-mask-image: url("/icons/code.svg");
   -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  -webkit-mask-position: center;
+}
+
+.responsive-circle {
+  background: var(--bg-color);
+  width: min(50vw, 700px);
+  height: min(50vw, 700px);
+  aspect-ratio: 1;
+  mask-image: url("/icons/bg-planet-mask.svg");
+  mask-repeat: repeat;
+  mask-size: cover;
+  mask-position: center;
+
+  -webkit-mask-image: url("/icons/bg-planet-mask.svg");
+  -webkit-mask-repeat: repeat;
   -webkit-mask-size: cover;
   -webkit-mask-position: center;
 }

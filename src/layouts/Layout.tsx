@@ -3,5 +3,5 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  return <div className="xl:px-10 px-2 overflow-hidden">{children}</div>;
+  return <div className="xl:px-24 px-4 overflow-hidden">{children}</div>;
 }

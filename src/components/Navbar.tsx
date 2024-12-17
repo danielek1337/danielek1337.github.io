@@ -3,12 +3,12 @@ import { SetStateAction, useEffect, useState } from "react";
 
 const navItems = [
   {
-    label: "PROJECTS",
-    href: "projects",
-  },
-  {
     label: "ABOUT",
     href: "about",
+  },
+  {
+    label: "PROJECTS",
+    href: "projects",
   },
   {
     label: "CONTACT",
