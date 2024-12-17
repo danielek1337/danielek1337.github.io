@@ -8,7 +8,7 @@ export default function Header() {
   const lineHeight = useTransform(scrollY, [500, 600], ["0px", "400px"]);
 
   return (
-    <header className="lg:bg-hero bg-heroMobile h-screen bg-contain bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
+    <header className="lg:bg-hero bg-heroMobile h-screen sm:bg-cover bg-contain bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
       <motion.div
         className="absolute m-auto top-1/3 left-0 right-0 w-fit backdrop-blur-sm p-4 rounded-3xl shadow-projectCardShadow"
         style={{ y: yPosition }}
