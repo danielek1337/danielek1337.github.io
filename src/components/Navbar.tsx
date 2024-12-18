@@ -49,8 +49,8 @@ export default function Navbar() {
     };
   }, []);
   return (
-    <nav className="xl:flex  justify-between py-2 px-4 items-center bg-transparent z-50 backdrop-blur mix-blend-difference shadow-projectCardShadow sticky top-0 text-center">
-      <h1 className="text-2xl font-bold hidden xl:block">
+    <nav className="sm:flex justify-between py-2 px-4 items-center bg-transparent z-50 backdrop-blur-2xl mix-blend-difference shadow-projectCardShadow sticky top-0 text-center">
+      <h1 className="text-2xl font-bold hidden sm:block">
         <a href="/">PORTFOLIO</a>
       </h1>
       <ul className="flex gap-6 justify-center">
@@ -58,7 +58,9 @@ export default function Navbar() {
           <li key={index} className="relative list-none group">
             <a
               href={`#${item.href}`}
-              className="text-lg font-medium text-white "
+              className={`text-lg font-medium ${
+                item.label === "CONTACT" ? "bg-gradient p-1 " : ""
+              }`}
             >
               {item.label}
             </a>

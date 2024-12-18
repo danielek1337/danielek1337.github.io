@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { slideInFromTop } from "../../utils/motion";
 
 type ProjectBoxProps = {
   id: number;
@@ -53,7 +52,7 @@ export default function ProjectBox({
     visible: {
       x: 0,
       opacity: 1,
-      transition: { duration: 0.6, type: "spring" },
+      transition: { duration: 0.4, type: "spring" },
     },
   };
 
@@ -102,7 +101,6 @@ export default function ProjectBox({
           exit="hidden"
           variants={bgVariant}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ ease: "easeOut", duration: 2 }}
         ></motion.div>
       </div>
     </motion.div>

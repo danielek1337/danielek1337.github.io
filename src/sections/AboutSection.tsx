@@ -1,6 +1,7 @@
 import { motion, useTransform, useScroll } from "framer-motion";
 import { techStack } from "../data/techstackData";
 import { useEffect, useState } from "react";
+import SectionTitle from "../components/ui/SectionTitle";
 
 export default function AboutSection() {
   const { scrollY } = useScroll();
@@ -15,12 +16,9 @@ export default function AboutSection() {
 
   const maskPosition = useTransform(scrollY, scrollRange, ["100%", "0%"]);
   return (
-    <section id="about" className="lg:h-[75vh] flex flex-col relative">
+    <section id="about" className="h-[90vh] flex flex-col relative">
       <div className="z-10 text-shadow-lg">
-        <div className="flex relative w-fit">
-          <h3 className="lg:text-6xl text-3xl">About</h3>
-          <span className="absolute right-0 bottom-0 h-px bg-white w-2/3"></span>
-        </div>
+        <SectionTitle label="about" />
         <p className="max-w-2xl pt-6">
           Nice to meet you! <br /> I'm Daniel, graduate with an engineering
           degree in Computer Science and a frontend developer based in Poland.
@@ -28,7 +26,7 @@ export default function AboutSection() {
         <p className="max-w-2xl pt-6 font-thin">My tech stack:</p>
         <ol className="pt-6 flex-wrap gap-9 list-image-listMarker list-inside	w-fit m-auto lg:ml-5">
           {techStack.map((item) => (
-            <li key={item.id} className="xl:text-xl pb-2">
+            <li key={item.id} className="xl:text-lg pb-2">
               {item.name}
             </li>
           ))}
