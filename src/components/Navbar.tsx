@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { SetStateAction, useEffect, useState } from "react";
 
 const navItems = [
@@ -56,25 +55,19 @@ export default function Navbar() {
       </h1>
       <ul className="flex gap-6 justify-center">
         {navItems.map((item, index) => (
-          <motion.li
-            key={index}
-            className="relative list-none"
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: "spring", stiffness: 1000 }}
-          >
+          <li key={index} className="relative list-none group">
             <a
               href={`#${item.href}`}
-              className="text-lg font-medium text-white"
+              className="text-lg font-medium text-white "
             >
               {item.label}
-              <span className="absolute left-0 bottom-0 w-0 h-1 bg-black"></span>
             </a>
             <span
-              className={`absolute right-0 bottom-0 h-px bg-white transition-all duration-300 ease-in-out ${
+              className={`absolute right-0 bottom-0 h-px bg-white transition-all duration-300 ease-in-out group-hover:w-1/2 ${
                 activeSection === item.href ? "w-1/2" : "w-0"
-              } hover:w-full`}
+              }`}
             ></span>
-          </motion.li>
+          </li>
         ))}
       </ul>
     </nav>

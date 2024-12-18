@@ -21,6 +21,9 @@ export default {
         DEFAULT: "0 2px 4px #000000",
         lg: "0 0 16px #000000",
       },
+      listStyleImage: {
+        listMarker: "url(/icons/list-marker.svg)",
+      },
     },
   },
   plugins: [

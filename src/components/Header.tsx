@@ -5,7 +5,7 @@ export default function Header() {
   const yPosition = useTransform(scrollY, [0, 300], [0, -150]);
   const arrowHeight = useTransform(scrollY, [0, 500], ["20px", "400px"]);
   const arrowOpacity = useTransform(scrollY, [400, 500], [1, 0]);
-  const lineHeight = useTransform(scrollY, [500, 600], ["0px", "400px"]);
+  const lineHeight = useTransform(scrollY, [500, 700], ["0px", "700px"]);
 
   return (
     <header className="lg:bg-hero bg-heroMobile h-screen sm:bg-cover bg-contain bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
@@ -42,7 +42,7 @@ export default function Header() {
           }}
         />
         <motion.div
-          className=" border-t-4 border-r-4 border-white w-4 h-4 transform rotate-[135deg]"
+          className="border-t-4 border-r-4 border-white w-4 h-4 transform rotate-[135deg]"
           style={{
             opacity: arrowOpacity,
           }}

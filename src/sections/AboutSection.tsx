@@ -10,7 +10,6 @@ export default function AboutSection() {
   useEffect(() => {
     const height = document.body.scrollHeight - window.innerHeight;
 
-    // Set dynamic scroll range
     setScrollRange([0, Math.max(height, 2000)]);
   }, []);
 
@@ -18,17 +17,22 @@ export default function AboutSection() {
   return (
     <section id="about" className="lg:h-[75vh] flex flex-col relative">
       <div className="z-10 text-shadow-lg">
-        <h3 className="lg:text-6xl text-3xl">About</h3>
+        <div className="flex relative w-fit">
+          <h3 className="lg:text-6xl text-3xl">About</h3>
+          <span className="absolute right-0 bottom-0 h-px bg-white w-2/3"></span>
+        </div>
         <p className="max-w-2xl pt-6">
           Nice to meet you! <br /> I'm Daniel, graduate with an engineering
           degree in Computer Science and a frontend developer based in Poland.
         </p>
-        <p className="max-w-2xl pt-6">Technologies that I use:</p>
-        <ul className="flex justify-center pt-6 flex-wrap gap-9">
+        <p className="max-w-2xl pt-6 font-thin">My tech stack:</p>
+        <ol className="pt-6 flex-wrap gap-9 list-image-listMarker list-inside	w-fit m-auto lg:ml-5">
           {techStack.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <li key={item.id} className="xl:text-xl pb-2">
+              {item.name}
+            </li>
           ))}
-        </ul>
+        </ol>
       </div>
       <div className="absolute -z-0 top-1/5 right-0 flex justify-center items-center bg-gradient rounded-full">
         <motion.div

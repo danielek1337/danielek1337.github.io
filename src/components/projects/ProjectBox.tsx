@@ -59,7 +59,7 @@ export default function ProjectBox({
 
   return (
     <motion.div
-      className={`py-2 xl:pb-10 my-10 w-full shadow-projectCardShadow xl:flex xl:gap-9 ${flexOrder} ${alignmentClass}`}
+      className={`py-2 xl:pb-10 my-10 w-full shadow-projectCardShadow lg:flex lg:gap-9 ${flexOrder} ${alignmentClass}`}
       initial="hidden"
       whileInView="visible"
       exit="hidden"
@@ -76,7 +76,7 @@ export default function ProjectBox({
           className="w-[100%] rounded-xl"
         />
       </div>
-      <div className="xl:text-lg text-sm flex flex-col items-center justify-center relative flex-[0.4]">
+      <div className="lg:text-lg text-sm flex flex-col items-center justify-center relative flex-[0.4]">
         <p className="font-medium text-justify z-10 mt-auto xl:py-0 pt-5 pb-4">
           {description}
         </p>
@@ -96,7 +96,7 @@ export default function ProjectBox({
           ))}
         </motion.ul>
         <motion.div
-          className="tech-box absolute -z-0 top-2/4 w-[350px] xl:h-1/2 "
+          className="tech-box absolute -z-0 top-2/4 w-[350px] lg:h-1/2 "
           initial="hidden"
           whileInView="visible"
           exit="hidden"
