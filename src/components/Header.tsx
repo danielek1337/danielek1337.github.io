@@ -17,7 +17,7 @@ export default function Header() {
     return () => unsubscribe();
   }, [scrollY]);
   return (
-    <header className="lg:bg-hero bg-heroMobile h-screen sm:bg-cover bg-contain bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
+    <header className="lg:bg-hero bg-heroMobile h-screen sm:bg-cover bg-cover bg-center bg-no-repeat shadow-heroBoxShadow text-center relative overflow-hidden">
       <motion.div
         className="absolute m-auto top-1/3 left-0 right-0 w-fit rounded-3xl"
         style={{ y: yPosition }}
@@ -41,7 +41,7 @@ export default function Header() {
       </motion.div>
 
       <motion.div
-        className="absolute lg:top-[54%] top-[47%] left-1/2 transform -translate-x-1/2"
+        className="absolute lg:top-[54%] top-[48%] left-1/2 transform -translate-x-1/2"
         style={{ height: arrowHeight }}
         animate={
           isAtTop

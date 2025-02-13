@@ -6,10 +6,10 @@ import SectionTitle from "../components/ui/SectionTitle";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="h-[50vh]">
+    <section id="contact" className="">
       <SectionTitle label="contact" />
       <div className="flex justify-center items-center h-full">
-        <div className="md:p-14 flex justify-between align-middle gap-4 md:gap-8 bg-[#0f2027] rounded-2xl shadow-projectCardShadow shadow-[#436979]">
+        <div className="md:p-14 flex justify-between align-middle gap-4 md:gap-8  rounded-2xl border-2">
           <MagneticContent>
             <a href="mailto:urban.daniel64@gmail.com" className="icon-color">
               <EmailIcon />

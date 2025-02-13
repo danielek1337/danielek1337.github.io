@@ -59,7 +59,7 @@ export default function Navbar() {
             <a
               href={`#${item.href}`}
               className={`text-lg font-medium ${
-                item.label === "CONTACT" ? "bg-gradient p-1 " : ""
+                item.label === "CONTACT" ? "bg-[#2c5364] p-1 " : ""
               }`}
             >
               {item.label}
