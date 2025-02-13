@@ -65,7 +65,7 @@ export default function ProjectBox({
       viewport={{ once: true, amount: 0.3 }}
       variants={variants}
     >
-      <div className="border px-2 pb-2 backdrop-blur-sm rounded-2xl flex-[0.6] ">
+      <div className="border-2 px-2 pb-2 backdrop-blur-sm rounded-2xl flex-[0.6] ">
         <h3 className="xl:text-2xl text-xl font-bold text-center py-2">
           {name}
         </h3>
