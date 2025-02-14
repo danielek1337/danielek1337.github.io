@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { forwardRef, SetStateAction, useEffect, useState } from "react";
 
 const navItems = [
   {
@@ -15,7 +15,7 @@ const navItems = [
   },
 ];
 
-export default function Navbar() {
+const Navbar = forwardRef((props, ref: any) => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
@@ -55,7 +55,11 @@ export default function Navbar() {
       </h1>
       <ul className="flex gap-6 justify-center">
         {navItems.map((item, index) => (
-          <li key={index} className="relative list-none group">
+          <li
+            key={index}
+            className="relative list-none group"
+            ref={(i) => (ref.current[index] = i)}
+          >
             <a
               href={`#${item.href}`}
               className={`text-lg font-medium ${
@@ -74,4 +78,6 @@ export default function Navbar() {
       </ul>
     </nav>
   );
-}
+});
+
+export default Navbar;

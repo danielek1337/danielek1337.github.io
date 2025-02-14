@@ -1,8 +1,8 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProjectSection from "./sections/ProjectSection";
+import MainLayout from "./layouts/MainLayout";
 import Layout from "./layouts/Layout";
 import Lenis from "lenis";
 import AboutSection from "./sections/AboutSection";
@@ -14,8 +14,7 @@ function App() {
   });
 
   return (
-    <>
-      <Navbar />
+    <MainLayout>
       <Header />
       <Layout>
         <AboutSection />
@@ -23,7 +22,7 @@ function App() {
         <ContactSection />
       </Layout>
       <Footer />
-    </>
+    </MainLayout>
   );
 }
 
