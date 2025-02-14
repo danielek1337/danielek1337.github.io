@@ -15,6 +15,7 @@ export default function ProjectBox({
   description,
   technologies,
   img,
+  url,
 }: ProjectBoxProps) {
   const isEven = id % 2 === 0;
   const alignmentClass = isEven ? "mr-auto" : "ml-auto";
@@ -69,11 +70,13 @@ export default function ProjectBox({
         <h3 className="xl:text-2xl text-xl font-bold text-center py-2">
           {name}
         </h3>
-        <img
-          src={img}
-          alt={`Project ${id} image`}
-          className="w-[100%] rounded-xl"
-        />
+        <a href={url ? url : ""} target="_blank">
+          <img
+            src={img}
+            alt={`Project ${id} image`}
+            className="w-[100%] rounded-xl"
+          />
+        </a>
       </div>
       <div className="lg:text-lg text-sm flex flex-col items-center justify-center relative flex-[0.4]">
         <p className="font-medium text-justify z-10 mt-auto xl:py-0 pt-5 pb-4">
