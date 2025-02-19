@@ -10,8 +10,8 @@ export default function StickyCursor({ stickyElement }: any) {
   const cursorHeight = 40;
 
   const mouse = {
-    x: useMotionValue(0),
-    y: useMotionValue(0),
+    x: useMotionValue(-30),
+    y: useMotionValue(-30),
   };
 
   const manageMouseMove = useCallback(

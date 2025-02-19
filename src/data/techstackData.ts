@@ -12,4 +12,6 @@ export const techStack = [
   { id: "5", name: "Framer Motion" },
   { id: "6", name: "SCSS" },
   { id: "7", name: "TailwindCSS" },
+  { id: "8", name: "Vitest" },
+  { id: "9", name: "Playwright" },
 ];
