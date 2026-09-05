@@ -18,7 +18,7 @@ export interface Dict {
   ctaSub: string;
   trust: string;
   previewLabel: string;
-  live: string;
+  previewOpen: string;
   workKicker: string;
   lblProblem: string;
   lblAction: string;
@@ -55,7 +55,7 @@ export const dictionaries: Record<Locale, Dict> = {
     trust:
       'Jeden wykonawca — od projektu po wdrożenie. Bez agencyjnego narzutu i bez znikania po starcie.',
     previewLabel: 'Na żywo — strona klienta',
-    live: 'Na żywo',
+    previewOpen: 'Otwórz stronę klienta w nowej karcie',
     workKicker: 'Realizacje',
     lblProblem: 'Problem',
     lblAction: 'Co zrobiłem',
@@ -112,7 +112,7 @@ export const dictionaries: Record<Locale, Dict> = {
     ctaSub: 'Reply within 1 business day',
     trust: 'One person — from design to launch. No agency overhead, no disappearing after go-live.',
     previewLabel: 'Live — client site',
-    live: 'Live',
+    previewOpen: 'Open the client site in a new tab',
     workKicker: 'Selected work',
     lblProblem: 'Problem',
     lblAction: 'What I did',

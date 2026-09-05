@@ -279,23 +279,19 @@ a {
   color: var(--preview-label-fg);
 }
 
-.preview-live {
+.preview-domain {
   font-size: 11px;
   color: var(--preview-label-fg);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.preview-live-dot {
-  animation: blink 1.6s ease infinite;
 }
 
 .browser {
+  display: block;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--browser-shadow);
   background: var(--inner-bg);
+  text-decoration: none;
+  color: inherit;
 }
 
 .browser-bar {
@@ -335,8 +331,24 @@ a {
   background: var(--inner-bg);
 }
 
+/*
+ * Wysokość musi odpowiadać przeskalowanej wysokości ramki (6000px * 0.25),
+ * bo transform nie wpływa na layout, a dystans animacji liczy się od niej.
+ */
 .preview-scroll {
+  height: 1500px;
   animation: previewScroll 14s ease-in-out infinite alternate;
+}
+
+.preview-frame {
+  width: 400%;
+  height: 6000px;
+  border: 0;
+  display: block;
+  background: var(--inner-bg);
+  transform: scale(0.25);
+  transform-origin: 0 0;
+  pointer-events: none;
 }
 
 /* ---------- Trust ---------- */
@@ -628,21 +640,10 @@ a {
     transform: translateY(0);
   }
   88% {
-    transform: translateY(-460px);
+    transform: translateY(-1160px);
   }
   100% {
-    transform: translateY(-460px);
-  }
-}
-
-@keyframes blink {
-  0%,
-  55% {
-    opacity: 1;
-  }
-  75%,
-  100% {
-    opacity: 0.25;
+    transform: translateY(-1160px);
   }
 }
 
@@ -658,8 +659,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .preview-float,
-  .preview-scroll,
-  .preview-live-dot {
+  .preview-scroll {
     animation: none;
   }
 
