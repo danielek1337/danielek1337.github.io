@@ -1,109 +1,331 @@
+/* eslint-disable @next/next/no-img-element -- static export, screenshots are pre-sized JPEGs */
 import BriefForm from '@/components/BriefForm';
-import BrowserPreview from '@/components/BrowserPreview';
-import Reveal from '@/components/Reveal';
+import Effects from '@/components/Effects';
 import { dictionaries, type CaseStudy, type Dict, type Locale } from '@/lib/i18n';
+import { SOCIALS } from '@/lib/site';
 
-function CaseCard({ c, t }: { c: CaseStudy; t: Dict }) {
+const icon = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 1.8,
+  strokeLinecap: 'round' as const,
+  strokeLinejoin: 'round' as const,
+  viewBox: '0 0 24 24',
+  'aria-hidden': true,
+};
+
+const Icons = {
+  instagram: (
+    <svg {...icon}>
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  linkedin: (
+    <svg {...icon}>
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7" />
+    </svg>
+  ),
+  facebook: (
+    <svg {...icon}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13.5 21v-7h2.5l.5-3h-3V9.5c0-.9.4-1.5 1.6-1.5H16.5V5.4A15 15 0 0 0 14.3 5C12 5 10.5 6.4 10.5 8.9V11H8v3h2.5v7" />
+    </svg>
+  ),
+  github: (
+    <svg {...icon}>
+      <path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+    </svg>
+  ),
+};
+
+function Arrow() {
   return (
-    <div className="case">
-      <div className="case-name">{c.name}</div>
-      <div className="case-tag">{c.tag}</div>
-      <p className="case-line">
-        <span className="case-lbl">{t.lblProblem} · </span>
-        {c.problem}
-      </p>
-      <p className="case-line">
-        <span className="case-lbl">{t.lblAction} · </span>
-        {c.action}
-      </p>
-      <div className="case-result">
-        <p>
-          <span className="case-result-lbl">{t.lblResult} · </span>
-          {c.result}
-        </p>
+    <span className="arr" aria-hidden="true">
+      →
+    </span>
+  );
+}
+
+function Case({ c, t }: { c: CaseStudy; t: Dict }) {
+  return (
+    <article className="case reveal">
+      <div className="win">
+        <div className="bar">
+          <i />
+          <i />
+          <i />
+          <span>{c.host}</span>
+        </div>
+        <div className={`view${c.dark ? ' dark' : ''}`}>
+          <img className="pan" src={c.shot} alt={c.alt} width={c.shotW} height={c.shotH} loading="lazy" />
+        </div>
       </div>
-      <div className="case-stack">
-        {c.stack.map((s) => (
-          <span key={s} className="stack-chip">
-            {s}
-          </span>
-        ))}
+      <div className="txt">
+        <span className="tag">{c.tag}</span>
+        <h3>{c.name}</h3>
+        <p>{c.body}</p>
+        <ul className="feats">
+          {c.feats.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+        <a className="link" href={c.url} target="_blank" rel="noopener noreferrer">
+          {t.seeSite} <span aria-hidden="true">↗</span>
+        </a>
       </div>
-    </div>
+    </article>
   );
 }
 
 export default function Landing({ locale }: { locale: Locale }) {
   const t = dictionaries[locale];
+  const words = t.heroTitle.split(' ');
+  const [genz] = t.cases;
+  const socials = [
+    { key: 'instagram', name: 'Instagram', href: SOCIALS.instagram.href, sub: SOCIALS.instagram.handle },
+    { key: 'linkedin', name: 'LinkedIn', href: SOCIALS.linkedin.href, sub: SOCIALS.linkedin.handle },
+    { key: 'facebook', name: 'Facebook', href: SOCIALS.facebook.href, sub: SOCIALS.facebook.handle },
+    { key: 'github', name: 'GitHub', href: SOCIALS.github.href, sub: t.socialCode },
+  ] as const;
 
   return (
     <>
-      <header className="container header">
-        <a className="brand" href={locale === 'pl' ? '/' : '/en/'}>
-          Web Urban
-        </a>
-        <div className="header-right">
-          <div className="badge">
-            <span className="badge-dot" />
-            {t.ctaSub}
+      <nav aria-label={locale === 'pl' ? 'Główna' : 'Main'} id="nav">
+        <div className="in">
+          <a className="logo" href={locale === 'pl' ? '/' : '/en/'}>
+            Web Urban<span>.</span>
+          </a>
+          <a className="pill sm" href="#brief">
+            {t.navCta}
+          </a>
+        </div>
+        <div className="progress" id="progress" />
+      </nav>
+
+      <main>
+        <header className="hero">
+          <div className="in">
+            <span className="eyebrow fade">{t.heroKicker}</span>
+            <h1 aria-label={t.heroTitle}>
+              <span aria-hidden="true">
+                {words.map((w, i) => (
+                  <span key={i}>
+                    <span className="w" style={{ '--i': i } as React.CSSProperties}>
+                      {w}
+                    </span>
+                    {i < words.length - 1 ? ' ' : ''}
+                  </span>
+                ))}
+              </span>
+            </h1>
+            <p className="sub fade" style={{ '--d': '450ms' } as React.CSSProperties}>
+              {t.heroSub}
+            </p>
+            <div className="cta-row fade" style={{ '--d': '600ms' } as React.CSSProperties}>
+              <a className="pill" href="#brief">
+                {t.cta} <Arrow />
+              </a>
+              <span className="small">
+                <span className="dot" />
+                {t.ctaSub}
+              </span>
+            </div>
           </div>
-          <nav className="lang-switch" aria-label="Language">
+        </header>
+
+        <div className="stage" id="stage">
+          <div className="sticky">
+            <div className="in">
+              <div className="frame-wrap" id="frameWrap">
+                <div className="frame">
+                  <div className="bar">
+                    <i />
+                    <i />
+                    <i />
+                    <span>{genz.host}</span>
+                  </div>
+                  <div className="view" id="heroView">
+                    <img id="heroImg" src={genz.shot} alt={t.heroPreviewAlt} width={genz.shotW} height={genz.shotH} />
+                  </div>
+                </div>
+              </div>
+              <p className="caption small">
+                {genz.name} · <span className="hint">{t.heroHint}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <section className="block" id="brief">
+          <div className="in">
+            <div className="head reveal">
+              <h2>{t.formTitle}</h2>
+              <p>{t.formSub}</p>
+            </div>
+            <BriefForm t={t} />
+          </div>
+        </section>
+
+        <section className="block alt" id="work">
+          <div className="in">
+            <div className="head reveal">
+              <h2>{t.workTitle}</h2>
+              <p>{t.workSub}</p>
+            </div>
+            <div className="work">
+              {t.cases.map((c) => (
+                <Case key={c.name} c={c} t={t} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="block" id="steps-section">
+          <div className="in">
+            <div className="head reveal">
+              <h2>{t.stepsTitle}</h2>
+              <p>{t.stepsSub}</p>
+            </div>
+            <ol className="steps" id="steps">
+              {t.steps.map((s, i) => (
+                <li className="step" key={s.title}>
+                  <b>{i + 1}</b>
+                  <div className="card">
+                    <span className="kick">{s.kick}</span>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="block alt" id="about">
+          <div className="in about">
+            <div className="mono reveal" aria-hidden="true">
+              <span>WU</span>
+            </div>
+            <div className="txt reveal" style={{ '--d': '120ms' } as React.CSSProperties}>
+              <span className="eyebrow">{t.aboutKicker}</span>
+              <h2>{t.aboutTitle}</h2>
+              <p className="lead">{t.aboutLead}</p>
+              <p>{t.aboutBody}</p>
+              <ul className="facts">
+                {t.facts.map((f) => (
+                  <li key={f.title}>
+                    <div>
+                      <b>{f.title}</b>
+                      <span>{f.body}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="block" id="prices">
+          <div className="in">
+            <div className="head reveal">
+              <h2>{t.pricesTitle}</h2>
+              <p>{t.pricesSub}</p>
+            </div>
+            <div className="prices">
+              {t.prices.map((p, i) => (
+                <div
+                  key={p.name}
+                  className={`price reveal${p.popular ? ' pop' : ''}`}
+                  style={{ '--d': `${i * 120}ms` } as React.CSSProperties}
+                  data-popular={p.popular ? t.popular : undefined}
+                >
+                  <h3>{p.name}</h3>
+                  <span className="amt">
+                    {p.from && <small>{p.from}</small>} {p.amount}
+                  </span>
+                  <p>{p.body}</p>
+                </div>
+              ))}
+            </div>
+            <div className="faq reveal">
+              {t.faq.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="block alt final">
+          <div className="in reveal">
+            <h2>{t.finalTitle}</h2>
+            <a className="pill" href="#brief">
+              {t.cta} <Arrow />
+            </a>
+          </div>
+        </section>
+
+        <section className="block" id="social">
+          <div className="in">
+            <div className="head reveal">
+              <h2>{t.socialTitle}</h2>
+              <p>{t.socialSub}</p>
+            </div>
+            <div className="socials">
+              {socials.map((s, i) => (
+                <a
+                  key={s.key}
+                  className="soc reveal"
+                  href={s.href}
+                  style={{ '--d': `${i * 80}ms` } as React.CSSProperties}
+                >
+                  {Icons[s.key]}
+                  <b>{s.name}</b>
+                  <span>
+                    {s.sub} <i aria-hidden="true">↗</i>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="in small">
+          <span>© Web Urban</span>
+          <span className="foot-soc">
+            {socials.map((s) => (
+              <a key={s.key} href={s.href}>
+                {s.name}
+              </a>
+            ))}
+          </span>
+          <nav className="lang" aria-label="Language">
             {/* Zwykłe <a>, nie <Link> — / i /en mają osobne root layouty (pełny reload) */}
-            <a className={`lang-btn ${locale === 'pl' ? 'active' : ''}`} href="/">
+            <a href="/" aria-current={locale === 'pl' ? 'page' : undefined}>
               PL
             </a>
-            <a className={`lang-btn ${locale === 'en' ? 'active' : ''}`} href="/en/">
+            <span aria-hidden="true">/</span>
+            <a href="/en/" aria-current={locale === 'en' ? 'page' : undefined}>
               EN
             </a>
           </nav>
         </div>
-      </header>
-
-      <main>
-        <div className="container">
-          <section className="hero">
-            <div>
-              <div className="kicker">{t.heroKicker}</div>
-              <h1>{t.heroTitle}</h1>
-              <p className="hero-sub">{t.heroSub}</p>
-              <a className="cta" href="#brief">
-                {t.cta} <span aria-hidden="true">→</span>
-              </a>
-              <div className="cta-note">{t.ctaSub}</div>
-            </div>
-            <BrowserPreview t={t} />
-          </section>
-        </div>
-
-        <Reveal className="container trust-wrap">
-          <div className="trust">{t.trust}</div>
-        </Reveal>
-
-        <Reveal className="container work-wrap">
-          <div className="section-kicker">{t.workKicker}</div>
-          <div className="case-grid">
-            <CaseCard c={t.cases[0]} t={t} />
-            <CaseCard c={t.cases[1]} t={t} />
-          </div>
-        </Reveal>
-
-        <Reveal className="container brief-wrap">
-          <section id="brief" className="brief">
-            <div>
-              <h2>{t.formTitle}</h2>
-              <p className="brief-sub">{t.formSub}</p>
-            </div>
-            <div className="form-card">
-              <BriefForm t={t} />
-            </div>
-          </section>
-        </Reveal>
-      </main>
-
-      <footer className="container footer">
-        <span>{t.footer} — Web Urban</span>
-        <span className="heart">♥</span>
       </footer>
+
+      <div className="dock" id="dock">
+        <a className="pill" href="#brief">
+          {t.cta} <Arrow />
+        </a>
+      </div>
+
+      <Effects />
     </>
   );
 }
