@@ -26,3 +26,8 @@ npm run build  # static export do out/
 
 - `SITE_URL` — po podpięciu domeny zmienić na `https://web-urban.com`
 - `FORMSPREE_ENDPOINT` — wkleić ID formularza z formspree.io (bez tego wysyłka briefu nie działa)
+- `SOCIALS` — linki do profili (na razie `#`)
+
+`lib/i18n.ts` — wszystkie teksty PL/EN, realizacje i ceny (kwoty `…` do uzupełnienia przed publikacją).
+
+Zrzuty realizacji: `public/work/` (pełne strony, przewijane w kartach i w podglądzie na górze).

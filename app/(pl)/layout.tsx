@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { spaceGrotesk, spaceMono } from '@/lib/fonts';
+import { onest } from '@/lib/fonts';
 import { SITE_URL } from '@/lib/site';
 import '@/app/globals.css';
 
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Web Urban — strony internetowe dla firm',
   description:
-    'Projektuję, koduję i podpinam pod CMS strony dla małych firm. Szybkie, łatwe w obsłudze, zrobione pod jeden cel — żeby przynosiły klientów.',
+    'Projektuję i koduję strony dla małych firm. Od projektu po start, bez agencyjnego narzutu, z panelem do samodzielnej edycji.',
   alternates: {
     canonical: '/',
     languages: { pl: '/', en: '/en/' },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
+    <html lang="pl" className={onest.variable}>
       <body>{children}</body>
     </html>
   );

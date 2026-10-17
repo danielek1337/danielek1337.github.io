@@ -35,30 +35,25 @@ export default function BriefForm({ t }: { t: Dict }) {
 
   if (status === 'ok') {
     return (
-      <div className="success">
-        <div className="success-title">{t.successTitle}</div>
-        <div className="success-body">{t.successBody}</div>
+      <div className="brief-form">
+        <div className="ok" role="status">
+          <b>{t.successTitle}</b>
+          <span className="small">{t.successBody}</span>
+        </div>
       </div>
     );
   }
 
   return (
-    <form className="brief-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="_gotcha"
-        tabIndex={-1}
-        autoComplete="off"
-        className="honeypot"
-        aria-hidden="true"
-      />
-      <label className="field">
-        <span className="field-lbl">{t.fBusiness}</span>
+    <form className="brief-form reveal" onSubmit={handleSubmit}>
+      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="honeypot" aria-hidden="true" />
+      <label>
+        {t.fBusiness}
         <input type="text" name="business" required />
       </label>
-      <div className="form-row">
-        <label className="field">
-          <span className="field-lbl">{t.fScope}</span>
+      <div className="row2">
+        <label>
+          {t.fScope}
           <select name="scope" defaultValue="">
             <option value="">{t.choose}</option>
             {t.scopeOptions.map((opt) => (
@@ -66,8 +61,8 @@ export default function BriefForm({ t }: { t: Dict }) {
             ))}
           </select>
         </label>
-        <label className="field">
-          <span className="field-lbl">{t.fTimeline}</span>
+        <label>
+          {t.fTimeline}
           <select name="timeline" defaultValue="">
             <option value="">{t.choose}</option>
             {t.timelineOptions.map((opt) => (
@@ -76,27 +71,37 @@ export default function BriefForm({ t }: { t: Dict }) {
           </select>
         </label>
       </div>
-      <div className="form-row">
-        <label className="field">
-          <span className="field-lbl">{t.fName}</span>
-          <input type="text" name="name" />
+      <div className="row2">
+        <label>
+          {t.fName}
+          <input type="text" name="name" autoComplete="given-name" />
         </label>
-        <label className="field">
-          <span className="field-lbl">{t.fEmail}</span>
-          <input type="email" name="email" required />
+        <label>
+          {t.fEmail}
+          <input type="email" name="email" required autoComplete="email" placeholder={t.fEmailPh} />
         </label>
       </div>
-      <label className="field">
-        <span className="field-lbl">{t.fSite}</span>
-        <input type="text" name="current_site" />
+      <label>
+        {t.fSite}
+        <input type="text" name="current_site" placeholder={t.fSitePh} />
       </label>
-      <label className="field">
-        <span className="field-lbl">{t.fDetails}</span>
+      <label>
+        {t.fDetails}
         <textarea name="details" rows={3} />
       </label>
-      {status === 'error' && <p className="form-error">{t.errorBody}</p>}
-      <button type="submit" className="submit-btn" disabled={status === 'sending'}>
-        {status === 'sending' ? t.sending : t.submit}
+      {status === 'error' && (
+        <p className="form-error" role="alert">
+          {t.errorBody}
+        </p>
+      )}
+      <button type="submit" className="pill" disabled={status === 'sending'}>
+        {status === 'sending' ? (
+          t.sending
+        ) : (
+          <>
+            {t.submit} <span className="arr" aria-hidden="true">→</span>
+          </>
+        )}
       </button>
     </form>
   );

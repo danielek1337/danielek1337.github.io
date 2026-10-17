@@ -1,15 +1,8 @@
-import { Space_Grotesk, Space_Mono } from 'next/font/google';
+import { Onest } from 'next/font/google';
 
-export const spaceGrotesk = Space_Grotesk({
+export const onest = Onest({
   subsets: ['latin', 'latin-ext'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-sans',
-  display: 'swap',
-});
-
-export const spaceMono = Space_Mono({
-  subsets: ['latin', 'latin-ext'],
-  weight: ['400', '700'],
-  variable: '--font-mono',
   display: 'swap',
 });
