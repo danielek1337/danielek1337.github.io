@@ -41,9 +41,7 @@ export interface Dict {
   heroTitle: string;
   heroSub: string;
   cta: string;
-  ctaSub: string;
   heroPreviewAlt: string;
-  heroHint: string;
   formTitle: string;
   formSub: string;
   choose: string;
@@ -111,9 +109,7 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: 'Podoba Ci się strona, z której tu trafiłeś?',
     heroSub: 'Zrobię taką dla Twojej firmy. Od projektu po start, bez agencyjnego narzutu.',
     cta: 'Wyceń stronę',
-    ctaSub: 'Odpowiedź w 1 dzień roboczy',
     heroPreviewAlt: 'Strona Generation Z Agency, przewijana w podglądzie',
-    heroHint: 'przewiń, żeby zobaczyć całą stronę ↓',
     formTitle: 'Opowiedz o swojej firmie.',
     formSub: 'Kilka pól, dwie minuty. Wrócę z wyceną i propozycją kolejnych kroków.',
     choose: '— wybierz —',
@@ -206,9 +202,7 @@ export const dictionaries: Record<Locale, Dict> = {
     heroTitle: 'Like the website that brought you here?',
     heroSub: 'I’ll build one like it for your business. From design to launch, without the agency mark-up.',
     cta: 'Get a quote',
-    ctaSub: 'Reply within 1 business day',
     heroPreviewAlt: 'The Generation Z Agency website, scrolling in the preview',
-    heroHint: 'scroll to see the whole site ↓',
     formTitle: 'Tell me about your business.',
     formSub: 'A few fields, two minutes. I’ll come back with a quote and next steps.',
     choose: '— select —',

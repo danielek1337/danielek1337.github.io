@@ -1,12 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { createHeroScrub } from '@/components/heroScrub';
 
 /*
  * All scroll and pointer motion for the landing page, attached to the
  * server-rendered markup by id and class name:
- * - hero preview grows, then scroll scrubs a recording of the client site
+ * - hero preview grows with scroll; the client-site recording plays only while visible
  * - project screenshots pan top to bottom while their card is on screen
  * - the 3-step rail fills with scroll and lights each step as it passes
  * - reveal-on-scroll, nav shadow, mobile CTA dock,
@@ -20,19 +19,15 @@ export default function Effects() {
     const $ = (id: string) => document.getElementById(id);
     const stage = $('stage');
     const wrap = $('frameWrap');
-    const heroView = $('heroView');
     const heroVid = $('heroVid') as HTMLVideoElement | null;
-    const heroSeq = $('heroSeq') as HTMLCanvasElement | null;
     const nav = $('nav');
     const dock = $('dock');
     const brief = $('brief');
     const steps = $('steps');
-    if (!stage || !wrap || !heroView || !heroVid || !heroSeq || !nav || !dock || !brief || !steps) return;
+    if (!stage || !wrap || !heroVid || !nav || !dock || !brief || !steps) return;
     const stepEls = Array.from(steps.querySelectorAll<HTMLElement>('.step'));
     const pans = Array.from(document.querySelectorAll<HTMLImageElement>('.pan'));
     const cleanups: Array<() => void> = [];
-    const hero = createHeroScrub(heroView, heroVid, heroSeq, reduce);
-    cleanups.push(hero.destroy);
 
     function measure() {
       pans.forEach((img) => {
@@ -72,11 +67,7 @@ export default function Effects() {
       const r = stage!.getBoundingClientRect();
       const total = Math.max(1, r.height - vh);
       const t = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (total + vh * 0.75)));
-      // First part: the frame grows. Second part: the site scrolls inside it.
-      wrap!.style.setProperty('--p', Math.min(1, t / 0.4).toFixed(3));
-      const q = Math.min(1, Math.max(0, (t - 0.42) / 0.5));
-      wrap!.style.setProperty('--q', q.toFixed(3));
-      hero.update(q);
+      wrap!.style.setProperty('--p', Math.min(1, t / 0.7).toFixed(3));
     }
 
     let queued = false;
@@ -108,19 +99,17 @@ export default function Effects() {
     tick();
 
     if ('IntersectionObserver' in window) {
-      // Start loading the scrub frames only when the preview is near the screen.
+      // One video file, fetched and played only while the preview is on screen.
       if (!reduce) {
-        const lio = new IntersectionObserver(
+        const vio = new IntersectionObserver(
           (es) => {
-            if (es[0].isIntersecting) {
-              hero.load();
-              lio.disconnect();
-            }
+            if (es[0].isIntersecting) heroVid.play().catch(() => {});
+            else heroVid.pause();
           },
-          { rootMargin: '600px' },
+          { threshold: 0.2 },
         );
-        lio.observe(stage);
-        cleanups.push(() => lio.disconnect());
+        vio.observe(heroVid);
+        cleanups.push(() => vio.disconnect());
       }
       if (!reduce) {
         const io = new IntersectionObserver(
@@ -146,7 +135,7 @@ export default function Effects() {
       document.querySelectorAll('.case').forEach((el) => on.observe(el));
       cleanups.push(() => on.disconnect());
     } else {
-      if (!reduce) hero.load();
+      if (!reduce) heroVid.play().catch(() => {});
       document.querySelectorAll('.case').forEach((el) => el.classList.add('on'));
     }
 
