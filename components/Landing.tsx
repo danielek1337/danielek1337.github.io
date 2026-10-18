@@ -102,7 +102,6 @@ export default function Landing({ locale }: { locale: Locale }) {
             {t.navCta}
           </a>
         </div>
-        <div className="progress" id="progress" />
       </nav>
 
       <main>

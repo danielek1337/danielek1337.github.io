@@ -8,7 +8,7 @@ import { useEffect } from 'react';
  * - hero preview grows, then scrolls the client site inside the frame
  * - project screenshots pan top to bottom while their card is on screen
  * - the 3-step rail fills with scroll and lights each step as it passes
- * - reveal-on-scroll, nav shadow and reading progress, mobile CTA dock,
+ * - reveal-on-scroll, nav shadow, mobile CTA dock,
  *   gentle tilt of project windows under the mouse.
  * Everything stays static when the visitor prefers reduced motion.
  */
@@ -22,11 +22,10 @@ export default function Effects() {
     const heroView = $('heroView');
     const heroImg = $('heroImg') as HTMLImageElement | null;
     const nav = $('nav');
-    const prog = $('progress');
     const dock = $('dock');
     const brief = $('brief');
     const steps = $('steps');
-    if (!stage || !wrap || !heroView || !heroImg || !nav || !prog || !dock || !brief || !steps) return;
+    if (!stage || !wrap || !heroView || !heroImg || !nav || !dock || !brief || !steps) return;
     const stepEls = Array.from(steps.querySelectorAll<HTMLElement>('.step'));
     const pans = Array.from(document.querySelectorAll<HTMLImageElement>('.pan'));
     const cleanups: Array<() => void> = [];
@@ -65,8 +64,6 @@ export default function Effects() {
       const vh = window.innerHeight;
       const y = window.scrollY;
       nav!.classList.toggle('scrolled', y > 8);
-      const max = document.documentElement.scrollHeight - vh;
-      prog!.style.setProperty('--read', max > 0 ? (y / max).toFixed(4) : '0');
       const br = brief!.getBoundingClientRect();
       dock!.classList.toggle('show', y > vh * 0.6 && !(br.top < vh && br.bottom > 0));
       stepsTick(vh);
