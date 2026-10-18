@@ -112,10 +112,6 @@ export default function Landing({ locale }: { locale: Locale }) {
               <a className="pill" href="#brief">
                 {t.cta} <Arrow />
               </a>
-              <span className="small">
-                <span className="dot" />
-                {t.ctaSub}
-              </span>
             </div>
           </div>
         </header>
