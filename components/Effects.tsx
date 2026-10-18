@@ -1,14 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
+import { createHeroScrub } from '@/components/heroScrub';
 
 /*
  * All scroll and pointer motion for the landing page, attached to the
  * server-rendered markup by id and class name:
- * - hero preview grows, then scrolls the client site inside the frame
+ * - hero preview grows, then scroll scrubs a recording of the client site
  * - project screenshots pan top to bottom while their card is on screen
  * - the 3-step rail fills with scroll and lights each step as it passes
- * - reveal-on-scroll, nav shadow and reading progress, mobile CTA dock,
+ * - reveal-on-scroll, nav shadow, mobile CTA dock,
  *   gentle tilt of project windows under the mouse.
  * Everything stays static when the visitor prefers reduced motion.
  */
@@ -20,21 +21,20 @@ export default function Effects() {
     const stage = $('stage');
     const wrap = $('frameWrap');
     const heroView = $('heroView');
-    const heroImg = $('heroImg') as HTMLImageElement | null;
+    const heroVid = $('heroVid') as HTMLVideoElement | null;
+    const heroSeq = $('heroSeq') as HTMLCanvasElement | null;
     const nav = $('nav');
-    const prog = $('progress');
     const dock = $('dock');
     const brief = $('brief');
     const steps = $('steps');
-    if (!stage || !wrap || !heroView || !heroImg || !nav || !prog || !dock || !brief || !steps) return;
+    if (!stage || !wrap || !heroView || !heroVid || !heroSeq || !nav || !dock || !brief || !steps) return;
     const stepEls = Array.from(steps.querySelectorAll<HTMLElement>('.step'));
     const pans = Array.from(document.querySelectorAll<HTMLImageElement>('.pan'));
     const cleanups: Array<() => void> = [];
+    const hero = createHeroScrub(heroView, heroVid, heroSeq, reduce);
+    cleanups.push(hero.destroy);
 
     function measure() {
-      // The hero screenshot scrolls about 60% of its overflow inside the frame.
-      const hd = Math.max(0, heroImg!.offsetHeight - heroView!.clientHeight);
-      wrap!.style.setProperty('--hdist', `${(-hd * 0.6).toFixed(0)}px`);
       pans.forEach((img) => {
         const box = img.parentElement!.clientHeight;
         const d = Math.max(0, img.offsetHeight - box);
@@ -65,8 +65,6 @@ export default function Effects() {
       const vh = window.innerHeight;
       const y = window.scrollY;
       nav!.classList.toggle('scrolled', y > 8);
-      const max = document.documentElement.scrollHeight - vh;
-      prog!.style.setProperty('--read', max > 0 ? (y / max).toFixed(4) : '0');
       const br = brief!.getBoundingClientRect();
       dock!.classList.toggle('show', y > vh * 0.6 && !(br.top < vh && br.bottom > 0));
       stepsTick(vh);
@@ -76,7 +74,9 @@ export default function Effects() {
       const t = Math.min(1, Math.max(0, (vh * 0.75 - r.top) / (total + vh * 0.75)));
       // First part: the frame grows. Second part: the site scrolls inside it.
       wrap!.style.setProperty('--p', Math.min(1, t / 0.4).toFixed(3));
-      wrap!.style.setProperty('--q', Math.min(1, Math.max(0, (t - 0.42) / 0.5)).toFixed(3));
+      const q = Math.min(1, Math.max(0, (t - 0.42) / 0.5));
+      wrap!.style.setProperty('--q', q.toFixed(3));
+      hero.update(q);
     }
 
     let queued = false;
@@ -98,7 +98,7 @@ export default function Effects() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
     });
-    [heroImg, ...pans].forEach((img) => {
+    pans.forEach((img) => {
       if (!img.complete) {
         img.addEventListener('load', measure);
         cleanups.push(() => img.removeEventListener('load', measure));
@@ -108,6 +108,20 @@ export default function Effects() {
     tick();
 
     if ('IntersectionObserver' in window) {
+      // Start loading the scrub frames only when the preview is near the screen.
+      if (!reduce) {
+        const lio = new IntersectionObserver(
+          (es) => {
+            if (es[0].isIntersecting) {
+              hero.load();
+              lio.disconnect();
+            }
+          },
+          { rootMargin: '600px' },
+        );
+        lio.observe(stage);
+        cleanups.push(() => lio.disconnect());
+      }
       if (!reduce) {
         const io = new IntersectionObserver(
           (es) =>
@@ -132,6 +146,7 @@ export default function Effects() {
       document.querySelectorAll('.case').forEach((el) => on.observe(el));
       cleanups.push(() => on.disconnect());
     } else {
+      if (!reduce) hero.load();
       document.querySelectorAll('.case').forEach((el) => el.classList.add('on'));
     }
 

@@ -7,8 +7,6 @@ export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 // TODO: podmienić na prawdziwe profile (na razie linki zastępcze).
 export const SOCIALS = {
-  instagram: { href: '#', handle: '@weburban' },
   linkedin: { href: '#', handle: 'Web Urban' },
-  facebook: { href: '#', handle: '/weburban' },
-  github: { href: '#' },
+  github: { href: '#', handle: 'danielek1337' },
 };
