@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Select from '@/components/Select';
 import type { Dict } from '@/lib/i18n';
 import { FORMSPREE_ENDPOINT } from '@/lib/site';
 
@@ -52,24 +53,8 @@ export default function BriefForm({ t }: { t: Dict }) {
         <input type="text" name="business" required />
       </label>
       <div className="row2">
-        <label>
-          {t.fScope}
-          <select name="scope" defaultValue="">
-            <option value="">{t.choose}</option>
-            {t.scopeOptions.map((opt) => (
-              <option key={opt}>{opt}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          {t.fTimeline}
-          <select name="timeline" defaultValue="">
-            <option value="">{t.choose}</option>
-            {t.timelineOptions.map((opt) => (
-              <option key={opt}>{opt}</option>
-            ))}
-          </select>
-        </label>
+        <Select label={t.fScope} name="scope" placeholder={t.choose} options={t.scopeOptions} />
+        <Select label={t.fTimeline} name="timeline" placeholder={t.choose} options={t.timelineOptions} />
       </div>
       <div className="row2">
         <label>
