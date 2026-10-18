@@ -83,7 +83,6 @@ export interface Dict {
   finalTitle: string;
   socialTitle: string;
   socialSub: string;
-  socialCode: string;
 }
 
 const genz = {
@@ -198,9 +197,8 @@ export const dictionaries: Record<Locale, Dict> = {
       },
     ],
     finalTitle: 'Twoja firma też może tak wyglądać.',
-    socialTitle: 'Zajrzyj, nad czym pracuję.',
-    socialSub: 'Nowe projekty i kulisy pracy wrzucam na bieżąco.',
-    socialCode: 'Kod moich stron',
+    socialTitle: 'Znajdziesz mnie też tu.',
+    socialSub: 'Doświadczenie zawodowe na LinkedInie, a kod moich projektów na GitHubie.',
   },
   en: {
     navCta: 'Get a quote',
@@ -294,8 +292,7 @@ export const dictionaries: Record<Locale, Dict> = {
       },
     ],
     finalTitle: 'Your business can look like this too.',
-    socialTitle: 'See what I’m working on.',
-    socialSub: 'I post new projects and behind-the-scenes work as it happens.',
-    socialCode: 'Code behind my sites',
+    socialTitle: 'You can also find me here.',
+    socialSub: 'My work experience on LinkedIn, and the code behind my projects on GitHub.',
   },
 };

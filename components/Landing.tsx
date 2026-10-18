@@ -15,23 +15,10 @@ const icon = {
 };
 
 const Icons = {
-  instagram: (
-    <svg {...icon}>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  ),
   linkedin: (
     <svg {...icon}>
       <rect x="3" y="3" width="18" height="18" rx="3" />
       <path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7" />
-    </svg>
-  ),
-  facebook: (
-    <svg {...icon}>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13.5 21v-7h2.5l.5-3h-3V9.5c0-.9.4-1.5 1.6-1.5H16.5V5.4A15 15 0 0 0 14.3 5C12 5 10.5 6.4 10.5 8.9V11H8v3h2.5v7" />
     </svg>
   ),
   github: (
@@ -85,10 +72,8 @@ export default function Landing({ locale }: { locale: Locale }) {
   const words = t.heroTitle.split(' ');
   const [genz] = t.cases;
   const socials = [
-    { key: 'instagram', name: 'Instagram', href: SOCIALS.instagram.href, sub: SOCIALS.instagram.handle },
     { key: 'linkedin', name: 'LinkedIn', href: SOCIALS.linkedin.href, sub: SOCIALS.linkedin.handle },
-    { key: 'facebook', name: 'Facebook', href: SOCIALS.facebook.href, sub: SOCIALS.facebook.handle },
-    { key: 'github', name: 'GitHub', href: SOCIALS.github.href, sub: t.socialCode },
+    { key: 'github', name: 'GitHub', href: SOCIALS.github.href, sub: SOCIALS.github.handle },
   ] as const;
 
   return (
@@ -147,7 +132,20 @@ export default function Landing({ locale }: { locale: Locale }) {
                     <span>{genz.host}</span>
                   </div>
                   <div className="view" id="heroView">
-                    <img id="heroImg" src={genz.shot} alt={t.heroPreviewAlt} width={genz.shotW} height={genz.shotH} />
+                    <video
+                      id="heroVid"
+                      muted
+                      playsInline
+                      loop
+                      autoPlay
+                      preload="auto"
+                      poster="/work/genz-poster.jpg"
+                      aria-label={t.heroPreviewAlt}
+                    >
+                      <source src="/work/genz-loop.webm" type="video/webm" />
+                      <source src="/work/genz-loop.mp4" type="video/mp4" />
+                    </video>
+                    <canvas id="heroSeq" width={1120} height={700} aria-hidden="true" />
                   </div>
                 </div>
               </div>
