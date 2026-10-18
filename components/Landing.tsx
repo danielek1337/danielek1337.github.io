@@ -28,6 +28,21 @@ const Icons = {
   ),
 };
 
+/* PL/EN switch. Plain <a> links: / and /en/ have separate root layouts, so a
+   full reload is needed. Effects.tsx keeps the current #section on switch. */
+function LangToggle({ locale, label }: { locale: Locale; label: string }) {
+  return (
+    <div className="lang" role="group" aria-label={label}>
+      <a href="/" hrefLang="pl" lang="pl" aria-current={locale === 'pl' ? 'page' : undefined}>
+        PL
+      </a>
+      <a href="/en/" hrefLang="en" lang="en" aria-current={locale === 'en' ? 'page' : undefined}>
+        EN
+      </a>
+    </div>
+  );
+}
+
 function Arrow() {
   return (
     <span className="arr" aria-hidden="true">
@@ -78,14 +93,36 @@ export default function Landing({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <nav aria-label={locale === 'pl' ? 'Główna' : 'Main'} id="nav">
+      <nav aria-label={t.navLabel} id="nav">
         <div className="in">
           <a className="logo" href={locale === 'pl' ? '/' : '/en/'}>
             Web Urban<span>.</span>
           </a>
-          <a className="pill sm" href="#brief">
-            {t.navCta}
-          </a>
+          <ul className="nav-links" id="navLinks">
+            {t.navLinks.map((l) => (
+              <li key={l.href}>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+          <div className="nav-end">
+            <LangToggle locale={locale} label={t.langLabel} />
+            <a className="pill sm nav-cta" href="#brief">
+              {t.navCta}
+            </a>
+            <button
+              type="button"
+              className="menu-btn"
+              id="menuBtn"
+              aria-expanded="false"
+              aria-controls="navLinks"
+              aria-label={t.menuOpen}
+              data-open={t.menuOpen}
+              data-close={t.menuClose}
+            >
+              <span aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -292,16 +329,7 @@ export default function Landing({ locale }: { locale: Locale }) {
               </a>
             ))}
           </span>
-          <nav className="lang" aria-label="Language">
-            {/* Zwykłe <a>, nie <Link> — / i /en mają osobne root layouty (pełny reload) */}
-            <a href="/" aria-current={locale === 'pl' ? 'page' : undefined}>
-              PL
-            </a>
-            <span aria-hidden="true">/</span>
-            <a href="/en/" aria-current={locale === 'en' ? 'page' : undefined}>
-              EN
-            </a>
-          </nav>
+          <LangToggle locale={locale} label={t.langLabel} />
         </div>
       </footer>
 

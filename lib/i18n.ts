@@ -36,6 +36,11 @@ export interface Fact {
 
 export interface Dict {
   navCta: string;
+  navLinks: { href: string; label: string }[];
+  navLabel: string;
+  menuOpen: string;
+  menuClose: string;
+  langLabel: string;
   heroKicker: string;
   heroTitle: string;
   heroSub: string;
@@ -103,6 +108,16 @@ const tattoo = {
 export const dictionaries: Record<Locale, Dict> = {
   pl: {
     navCta: 'Wyceń stronę',
+    navLinks: [
+      { href: '#work', label: 'Realizacje' },
+      { href: '#steps-section', label: 'Jak pracuję' },
+      { href: '#about', label: 'O mnie' },
+      { href: '#prices', label: 'Cennik' },
+    ],
+    navLabel: 'Główna',
+    menuOpen: 'Otwórz menu',
+    menuClose: 'Zamknij menu',
+    langLabel: 'Język',
     heroKicker: 'Strony dla małych firm',
     heroTitle: 'Podoba Ci się strona, z której tu trafiłeś?',
     heroSub: 'Zrobię taką dla Twojej firmy. Od projektu po start, bez agencyjnego narzutu.',
@@ -195,6 +210,16 @@ export const dictionaries: Record<Locale, Dict> = {
   },
   en: {
     navCta: 'Get a quote',
+    navLinks: [
+      { href: '#work', label: 'Work' },
+      { href: '#steps-section', label: 'Process' },
+      { href: '#about', label: 'About' },
+      { href: '#prices', label: 'Pricing' },
+    ],
+    navLabel: 'Main',
+    menuOpen: 'Open menu',
+    menuClose: 'Close menu',
+    langLabel: 'Language',
     heroKicker: 'Websites for small businesses',
     heroTitle: 'Like the website that brought you here?',
     heroSub: 'I’ll build one like it for your business. From design to launch, without the agency mark-up.',

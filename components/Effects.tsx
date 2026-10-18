@@ -26,6 +26,7 @@ export default function Effects() {
     const steps = $('steps');
     if (!stage || !wrap || !heroVid || !nav || !dock || !brief || !steps) return;
     const stepEls = Array.from(steps.querySelectorAll<HTMLElement>('.step'));
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-links a'));
     const pans = Array.from(document.querySelectorAll<HTMLImageElement>('.pan'));
     const cleanups: Array<() => void> = [];
 
@@ -63,6 +64,13 @@ export default function Effects() {
       const br = brief!.getBoundingClientRect();
       dock!.classList.toggle('show', y > vh * 0.6 && !(br.top < vh && br.bottom > 0));
       stepsTick(vh);
+      // Highlight the nav link of the section in view.
+      let active: HTMLAnchorElement | null = null;
+      navLinks.forEach((l) => {
+        const sec = document.getElementById(l.hash.slice(1));
+        if (sec && sec.getBoundingClientRect().top < vh * 0.4) active = l;
+      });
+      navLinks.forEach((l) => (l === active ? l.setAttribute('aria-current', 'true') : l.removeAttribute('aria-current')));
       if (reduce) return;
       const r = stage!.getBoundingClientRect();
       const total = Math.max(1, r.height - vh);
@@ -138,6 +146,64 @@ export default function Effects() {
       if (!reduce) heroVid.play().catch(() => {});
       document.querySelectorAll('.case').forEach((el) => el.classList.add('on'));
     }
+
+    // Mobile menu: the button opens the section links; a link, Escape or a
+    // tap outside closes them.
+    const menuBtn = $('menuBtn');
+    if (menuBtn) {
+      const setOpen = (open: boolean) => {
+        nav.classList.toggle('open', open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', (open ? menuBtn.dataset.close : menuBtn.dataset.open) ?? '');
+      };
+      const onBtn = () => setOpen(!nav.classList.contains('open'));
+      const onNavClick = (e: MouseEvent) => {
+        if ((e.target as HTMLElement).closest('.nav-links a')) setOpen(false);
+      };
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && nav.classList.contains('open')) {
+          setOpen(false);
+          menuBtn.focus();
+        }
+      };
+      const onDoc = (e: MouseEvent) => {
+        if (!nav.contains(e.target as Node)) setOpen(false);
+      };
+      menuBtn.addEventListener('click', onBtn);
+      nav.addEventListener('click', onNavClick);
+      document.addEventListener('keydown', onKey);
+      document.addEventListener('click', onDoc);
+      cleanups.push(() => {
+        menuBtn.removeEventListener('click', onBtn);
+        nav.removeEventListener('click', onNavClick);
+        document.removeEventListener('keydown', onKey);
+        document.removeEventListener('click', onDoc);
+      });
+    }
+
+    // Switching PL/EN keeps the visitor on the same section.
+    const onLang = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest<HTMLAnchorElement>('.lang a');
+      if (!a || a.getAttribute('aria-current') === 'page') return;
+      const ids = navLinks.map((l) => l.hash.slice(1)).concat('brief');
+      const vh = window.innerHeight;
+      // The section whose top is closest above 40% of the screen.
+      let here = '';
+      let best = -Infinity;
+      ids.forEach((id) => {
+        const top = document.getElementById(id)?.getBoundingClientRect().top ?? Infinity;
+        if (top < vh * 0.4 && top > best) {
+          best = top;
+          here = id;
+        }
+      });
+      if (here) {
+        e.preventDefault();
+        window.location.href = `${a.getAttribute('href')}#${here}`;
+      }
+    };
+    document.addEventListener('click', onLang);
+    cleanups.push(() => document.removeEventListener('click', onLang));
 
     // Gentle 3D tilt of the project windows under the mouse.
     if (finePointer && !reduce) {
