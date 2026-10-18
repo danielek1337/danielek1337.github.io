@@ -96,7 +96,7 @@ const tattoo = {
   url: 'https://adriannaurbantattoos.com',
   shot: '/work/tattoo-page.jpg',
   shotW: 1200,
-  shotH: 1633,
+  shotH: 3999,
   dark: true,
 };
 
