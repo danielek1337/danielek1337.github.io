@@ -133,21 +133,17 @@ export default function Landing({ locale }: { locale: Locale }) {
                       muted
                       playsInline
                       loop
-                      autoPlay
-                      preload="auto"
+                      preload="none"
                       poster="/work/genz-poster.jpg"
                       aria-label={t.heroPreviewAlt}
                     >
-                      <source src="/work/genz-loop.webm" type="video/webm" />
-                      <source src="/work/genz-loop.mp4" type="video/mp4" />
+                      <source src="/work/genz-preview.webm" type="video/webm" />
+                      <source src="/work/genz-preview.mp4" type="video/mp4" />
                     </video>
-                    <canvas id="heroSeq" width={1120} height={700} aria-hidden="true" />
                   </div>
                 </div>
               </div>
-              <p className="caption small">
-                {genz.name} · <span className="hint">{t.heroHint}</span>
-              </p>
+              <p className="caption small">{genz.name}</p>
             </div>
           </div>
         </div>
