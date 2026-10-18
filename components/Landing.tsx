@@ -183,7 +183,6 @@ export default function Landing({ locale }: { locale: Locale }) {
                 <li className="step" key={s.title}>
                   <b>{i + 1}</b>
                   <div className="card">
-                    <span className="kick">{s.kick}</span>
                     <h3>{s.title}</h3>
                     <p>{s.body}</p>
                   </div>
@@ -195,12 +194,11 @@ export default function Landing({ locale }: { locale: Locale }) {
 
         <section className="block alt" id="about">
           <div className="in about">
-            <div className="mono reveal" aria-hidden="true">
-              <span>WU</span>
-            </div>
-            <div className="txt reveal" style={{ '--d': '120ms' } as React.CSSProperties}>
+            <div className="intro reveal">
               <span className="eyebrow">{t.aboutKicker}</span>
               <h2>{t.aboutTitle}</h2>
+            </div>
+            <div className="txt reveal" style={{ '--d': '120ms' } as React.CSSProperties}>
               <p className="lead">{t.aboutLead}</p>
               <p>{t.aboutBody}</p>
               <ul className="facts">
@@ -229,7 +227,6 @@ export default function Landing({ locale }: { locale: Locale }) {
                   key={p.name}
                   className={`price reveal${p.popular ? ' pop' : ''}`}
                   style={{ '--d': `${i * 120}ms` } as React.CSSProperties}
-                  data-popular={p.popular ? t.popular : undefined}
                 >
                   <h3>{p.name}</h3>
                   <span className="amt">

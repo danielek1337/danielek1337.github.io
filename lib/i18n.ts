@@ -16,7 +16,6 @@ export interface CaseStudy {
 }
 
 export interface Step {
-  kick: string;
   title: string;
   body: string;
 }
@@ -75,7 +74,6 @@ export interface Dict {
   facts: Fact[];
   pricesTitle: string;
   pricesSub: string;
-  popular: string;
   prices: [Price, Price, Price];
   faq: { q: string; a: string }[];
   finalTitle: string;
@@ -110,7 +108,7 @@ export const dictionaries: Record<Locale, Dict> = {
     heroSub: 'Zrobię taką dla Twojej firmy. Od projektu po start, bez agencyjnego narzutu.',
     cta: 'Wyceń stronę',
     heroPreviewAlt: 'Strona Generation Z Agency, przewijana w podglądzie',
-    formTitle: 'Opowiedz o swojej firmie.',
+    formTitle: 'Opowiedz o swojej firmie',
     formSub: 'Kilka pól, dwie minuty. Wrócę z wyceną i propozycją kolejnych kroków.',
     choose: '— wybierz —',
     fBusiness: 'Czym zajmuje się Twój biznes?',
@@ -129,7 +127,7 @@ export const dictionaries: Record<Locale, Dict> = {
     successTitle: 'Dziękuję, brief poszedł.',
     successBody: 'Odezwę się na maila w ciągu 1 dnia roboczego.',
     errorBody: 'Coś poszło nie tak przy wysyłce. Spróbuj ponownie za chwilę.',
-    workTitle: 'Strony, które już pracują.',
+    workTitle: 'Strony, które już pracują',
     workSub: 'Bez technicznego żargonu. Tylko to, co strona zmieniła w firmie.',
     seeSite: 'Zobacz stronę',
     cases: [
@@ -148,15 +146,15 @@ export const dictionaries: Record<Locale, Dict> = {
         alt: 'Strona Adrianna Urban Tattoos, przewijana od góry do dołu',
       },
     ],
-    stepsTitle: 'Od briefu do startu w trzech krokach.',
+    stepsTitle: 'Od briefu do startu w trzech krokach',
     stepsSub: 'Wiesz, co się dzieje na każdym etapie.',
     steps: [
-      { kick: 'Ty', title: 'Brief', body: 'Wypełniasz krótki formularz. Wracam z wyceną w 1 dzień roboczy.' },
-      { kick: 'Razem', title: 'Projekt', body: 'Pokazuję projekt strony. Poprawiamy go, aż będzie pasował do firmy.' },
-      { kick: 'Start', title: 'Strona online', body: 'Strona idzie online, a Ty dostajesz prosty panel do zmiany treści.' },
+      { title: 'Brief', body: 'Wypełniasz krótki formularz. Wracam z wyceną w 1 dzień roboczy.' },
+      { title: 'Projekt', body: 'Pokazuję projekt strony. Poprawiamy go, aż będzie pasował do firmy.' },
+      { title: 'Strona online', body: 'Strona idzie online, a Ty dostajesz prosty panel do zmiany treści.' },
     ],
     aboutKicker: 'O mnie',
-    aboutTitle: 'Jedna osoba od pomysłu do startu.',
+    aboutTitle: 'Jedna osoba od pomysłu do startu',
     aboutLead:
       'Cześć, tu Web Urban. Projektuję i koduję strony dla małych firm, które chcą wyglądać w sieci tak dobrze, jak pracują na co dzień.',
     aboutBody:
@@ -168,7 +166,6 @@ export const dictionaries: Record<Locale, Dict> = {
     ],
     pricesTitle: 'Ile to kosztuje?',
     pricesSub: 'Każdą stronę wyceniam indywidualnie. Te widełki pomogą Ci się zorientować.',
-    popular: 'Najczęściej wybierana',
     // TODO: wpisać kwoty przed publikacją.
     prices: [
       { name: 'Wizytówka', from: 'od', amount: '… zł', body: 'Jedna strona z ofertą, kontaktem i mapą dojazdu.' },
@@ -192,8 +189,8 @@ export const dictionaries: Record<Locale, Dict> = {
         a: 'Zostaję w kontakcie. Poprawki i opiekę ustalamy razem, zależnie od potrzeb.',
       },
     ],
-    finalTitle: 'Twoja firma też może tak wyglądać.',
-    socialTitle: 'Znajdziesz mnie też tu.',
+    finalTitle: 'Twoja firma też może tak wyglądać',
+    socialTitle: 'Znajdziesz mnie też tu',
     socialSub: 'Doświadczenie zawodowe na LinkedInie, a kod moich projektów na GitHubie.',
   },
   en: {
@@ -203,7 +200,7 @@ export const dictionaries: Record<Locale, Dict> = {
     heroSub: 'I’ll build one like it for your business. From design to launch, without the agency mark-up.',
     cta: 'Get a quote',
     heroPreviewAlt: 'The Generation Z Agency website, scrolling in the preview',
-    formTitle: 'Tell me about your business.',
+    formTitle: 'Tell me about your business',
     formSub: 'A few fields, two minutes. I’ll come back with a quote and next steps.',
     choose: '— select —',
     fBusiness: 'What does your business do?',
@@ -222,7 +219,7 @@ export const dictionaries: Record<Locale, Dict> = {
     successTitle: 'Thanks, your brief is on its way.',
     successBody: 'I’ll reply by email within 1 business day.',
     errorBody: 'Something went wrong while sending. Please try again in a moment.',
-    workTitle: 'Websites already at work.',
+    workTitle: 'Websites already at work',
     workSub: 'No tech jargon. Just what the website changed for the business.',
     seeSite: 'Visit site',
     cases: [
@@ -241,15 +238,15 @@ export const dictionaries: Record<Locale, Dict> = {
         alt: 'The Adrianna Urban Tattoos website, scrolling from top to bottom',
       },
     ],
-    stepsTitle: 'From brief to launch in three steps.',
+    stepsTitle: 'From brief to launch in three steps',
     stepsSub: 'You know what’s happening at every stage.',
     steps: [
-      { kick: 'You', title: 'Brief', body: 'You fill in a short form. I come back with a quote within 1 business day.' },
-      { kick: 'Together', title: 'Design', body: 'I show you the design. We refine it until it fits your business.' },
-      { kick: 'Launch', title: 'Site goes live', body: 'The site goes live and you get a simple panel to edit the content.' },
+      { title: 'Brief', body: 'You fill in a short form. I come back with a quote within 1 business day.' },
+      { title: 'Design', body: 'I show you the design. We refine it until it fits your business.' },
+      { title: 'Site goes live', body: 'The site goes live and you get a simple panel to edit the content.' },
     ],
     aboutKicker: 'About me',
-    aboutTitle: 'One person from idea to launch.',
+    aboutTitle: 'One person from idea to launch',
     aboutLead:
       'Hi, this is Web Urban. I design and build websites for small businesses that want to look as good online as they work every day.',
     aboutBody:
@@ -261,7 +258,6 @@ export const dictionaries: Record<Locale, Dict> = {
     ],
     pricesTitle: 'How much does it cost?',
     pricesSub: 'Every site is priced individually. These ranges will help you get a feel for it.',
-    popular: 'Most popular',
     // TODO: fill in amounts before publishing.
     prices: [
       { name: 'One-pager', from: 'from', amount: 'PLN …', body: 'A single page with your offer, contact details and a map.' },
@@ -285,8 +281,8 @@ export const dictionaries: Record<Locale, Dict> = {
         a: 'I stay in touch. We agree on fixes and ongoing care together, depending on your needs.',
       },
     ],
-    finalTitle: 'Your business can look like this too.',
-    socialTitle: 'You can also find me here.',
+    finalTitle: 'Your business can look like this too',
+    socialTitle: 'You can also find me here',
     socialSub: 'My work experience on LinkedIn, and the code behind my projects on GitHub.',
   },
 };
