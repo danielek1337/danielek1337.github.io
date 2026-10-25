@@ -182,11 +182,16 @@ export const dictionaries: Record<Locale, Dict> = {
     pricesSub: 'Każdą stronę wyceniam indywidualnie. Te widełki pomogą Ci się zorientować.',
     // TODO: wpisać kwoty przed publikacją.
     prices: [
-      { name: 'Wizytówka', from: 'od', amount: '… zł', body: 'Jedna strona z ofertą, kontaktem i mapą dojazdu.' },
+      {
+        name: 'Wizytówka',
+        from: '',
+        amount: '500–1500 zł',
+        body: 'Jedna strona z ofertą, kontaktem i mapą dojazdu. Z formularzem kontaktowym bliżej górnej granicy.',
+      },
       {
         name: 'Strona firmowa',
-        from: 'od',
-        amount: '… zł',
+        from: '',
+        amount: 'Wycena',
         body: 'Kilka sekcji, galeria lub realizacje i panel do samodzielnej edycji.',
         popular: true,
       },
@@ -283,11 +288,16 @@ export const dictionaries: Record<Locale, Dict> = {
     pricesSub: 'Every site is priced individually. These ranges will help you get a feel for it.',
     // TODO: fill in amounts before publishing.
     prices: [
-      { name: 'One-pager', from: 'from', amount: 'PLN …', body: 'A single page with your offer, contact details and a map.' },
+      {
+        name: 'One-pager',
+        from: '',
+        amount: 'PLN 500–1,500',
+        body: 'A single page with your offer, contact details and a map. With a contact form, closer to the upper end.',
+      },
       {
         name: 'Business website',
-        from: 'from',
-        amount: 'PLN …',
+        from: '',
+        amount: 'Custom',
         body: 'Several sections, a gallery or case studies, and a panel to edit it yourself.',
         popular: true,
       },
