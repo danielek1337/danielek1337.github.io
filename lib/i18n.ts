@@ -65,6 +65,7 @@ export interface Dict {
   successTitle: string;
   successBody: string;
   errorBody: string;
+  mailSubject: string;
   workTitle: string;
   workSub: string;
   seeSite: string;
@@ -142,6 +143,7 @@ export const dictionaries: Record<Locale, Dict> = {
     successTitle: 'Dziękuję, brief poszedł.',
     successBody: 'Odezwę się na maila w ciągu 1 dnia roboczego.',
     errorBody: 'Coś poszło nie tak przy wysyłce. Spróbuj ponownie za chwilę.',
+    mailSubject: 'Nowy brief ze strony (PL)',
     workTitle: 'Strony, które już pracują',
     workSub: 'Bez technicznego żargonu. Tylko to, co strona zmieniła w firmie.',
     seeSite: 'Zobacz stronę',
@@ -244,6 +246,7 @@ export const dictionaries: Record<Locale, Dict> = {
     successTitle: 'Thanks, your brief is on its way.',
     successBody: 'I’ll reply by email within 1 business day.',
     errorBody: 'Something went wrong while sending. Please try again in a moment.',
+    mailSubject: 'New brief from the website (EN)',
     workTitle: 'Websites already at work',
     workSub: 'No tech jargon. Just what the website changed for the business.',
     seeSite: 'Visit site',
