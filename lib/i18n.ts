@@ -156,7 +156,7 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...tattoo,
         tag: 'Studio tatuażu · York',
-        body: 'Portfolio z prostym zarządzaniem galerią zdjęć. Nowe prace dodaje się w kilka chwil, a strona dobrze wygląda też na telefonie.',
+        body: 'Portfolio z prostym zarządzaniem galerią zdjęć. Nowe prace dodaje się w kilka chwil, bez pomocy programisty.',
         alt: 'Strona Adrianna Urban Tattoos, przewijana od góry do dołu',
       },
     ],
@@ -257,7 +257,7 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...tattoo,
         tag: 'Tattoo studio · York',
-        body: 'A portfolio with simple photo gallery management. New work goes up in moments, and the site looks good on a phone too.',
+        body: 'A portfolio with simple photo gallery management. New work goes up in moments, no developer needed.',
         alt: 'The Adrianna Urban Tattoos website, scrolling from top to bottom',
       },
     ],
