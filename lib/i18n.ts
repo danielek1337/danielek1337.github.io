@@ -150,13 +150,13 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...genz,
         tag: 'Agencja marketingowa · Warszawa',
-        body: 'Zespół sam zmienia treści na stronie. Nowość jest online w kilka minut, bez dzwonienia do programisty.',
+        body: 'Strona z pełnym panelem do zarządzania treścią. Teksty, zdjęcia i realizacje zespół zmienia sam, bez pomocy programisty.',
         alt: 'Strona Generation Z Agency, przewijana od góry do dołu',
       },
       {
         ...tattoo,
         tag: 'Studio tatuażu · York',
-        body: 'Nowe prace trafiają do galerii w minutę i ładują się szybko nawet na telefonie.',
+        body: 'Portfolio z prostym zarządzaniem galerią zdjęć. Nowe prace dodaje się w kilka chwil, a strona dobrze wygląda też na telefonie.',
         alt: 'Strona Adrianna Urban Tattoos, przewijana od góry do dołu',
       },
     ],
@@ -251,13 +251,13 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...genz,
         tag: 'Marketing agency · Warsaw',
-        body: 'The team edits the site themselves. New content goes live in minutes, no developer call needed.',
+        body: 'A website with a full content management panel. The team updates text, photos and projects themselves, no developer needed.',
         alt: 'The Generation Z Agency website, scrolling from top to bottom',
       },
       {
         ...tattoo,
         tag: 'Tattoo studio · York',
-        body: 'New work lands in the gallery in a minute and loads fast even on a phone.',
+        body: 'A portfolio with simple photo gallery management. New work goes up in moments, and the site looks good on a phone too.',
         alt: 'The Adrianna Urban Tattoos website, scrolling from top to bottom',
       },
     ],
