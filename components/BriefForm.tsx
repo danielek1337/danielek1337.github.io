@@ -48,6 +48,7 @@ export default function BriefForm({ t }: { t: Dict }) {
   return (
     <form className="brief-form reveal" onSubmit={handleSubmit}>
       <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="honeypot" aria-hidden="true" />
+      <input type="hidden" name="_subject" value={t.mailSubject} />
       <label>
         {t.fBusiness}
         <input type="text" name="business" required />
