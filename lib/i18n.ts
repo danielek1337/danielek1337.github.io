@@ -11,7 +11,6 @@ export interface CaseStudy {
   shotH: number;
   dark?: boolean;
   body: string;
-  feats: string[];
   alt: string;
 }
 
@@ -152,14 +151,12 @@ export const dictionaries: Record<Locale, Dict> = {
         ...genz,
         tag: 'Agencja marketingowa · Warszawa',
         body: 'Zespół sam zmienia treści na stronie. Nowość jest online w kilka minut, bez dzwonienia do programisty.',
-        feats: ['Panel do edycji', 'Wideo w nagłówku', 'Logotypy klientów'],
         alt: 'Strona Generation Z Agency, przewijana od góry do dołu',
       },
       {
         ...tattoo,
         tag: 'Studio tatuażu · York',
         body: 'Nowe prace trafiają do galerii w minutę i ładują się szybko nawet na telefonie.',
-        feats: ['Galeria z filtrami', 'Rezerwacje', 'Wersja na telefon'],
         alt: 'Strona Adrianna Urban Tattoos, przewijana od góry do dołu',
       },
     ],
@@ -255,14 +252,12 @@ export const dictionaries: Record<Locale, Dict> = {
         ...genz,
         tag: 'Marketing agency · Warsaw',
         body: 'The team edits the site themselves. New content goes live in minutes, no developer call needed.',
-        feats: ['Editing panel', 'Hero video', 'Client logos'],
         alt: 'The Generation Z Agency website, scrolling from top to bottom',
       },
       {
         ...tattoo,
         tag: 'Tattoo studio · York',
         body: 'New work lands in the gallery in a minute and loads fast even on a phone.',
-        feats: ['Filterable gallery', 'Bookings', 'Mobile-ready'],
         alt: 'The Adrianna Urban Tattoos website, scrolling from top to bottom',
       },
     ],
