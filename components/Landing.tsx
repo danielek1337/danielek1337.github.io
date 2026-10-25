@@ -69,11 +69,6 @@ function Case({ c, t }: { c: CaseStudy; t: Dict }) {
         <span className="tag">{c.tag}</span>
         <h3>{c.name}</h3>
         <p>{c.body}</p>
-        <ul className="feats">
-          {c.feats.map((f) => (
-            <li key={f}>{f}</li>
-          ))}
-        </ul>
         <a className="link" href={c.url} target="_blank" rel="noopener noreferrer">
           {t.seeSite} <span aria-hidden="true">↗</span>
         </a>

@@ -140,8 +140,6 @@ textarea{resize:vertical}
 .case .tag{font-size:.82rem;font-weight:600;color:var(--muted)}
 .case h3{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:800}
 .case p{color:var(--muted);font-size:1.1rem}
-.feats{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px;padding:0;list-style:none}
-.feats li{font-size:.8rem;font-weight:500;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 12px}
 
 .reveal{transition:transform .9s var(--ease),opacity .9s;transition-delay:var(--d,0ms)}
 .reveal.pending{transform:translateY(32px);opacity:0}

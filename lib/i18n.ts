@@ -11,7 +11,6 @@ export interface CaseStudy {
   shotH: number;
   dark?: boolean;
   body: string;
-  feats: string[];
   alt: string;
 }
 
@@ -151,15 +150,13 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...genz,
         tag: 'Agencja marketingowa · Warszawa',
-        body: 'Zespół sam zmienia treści na stronie. Nowość jest online w kilka minut, bez dzwonienia do programisty.',
-        feats: ['Panel do edycji', 'Wideo w nagłówku', 'Logotypy klientów'],
+        body: 'Strona, która pokazuje ofertę agencji, zanim klient zadzwoni. Nowe realizacje zespół dodaje sam, tego samego dnia.',
         alt: 'Strona Generation Z Agency, przewijana od góry do dołu',
       },
       {
         ...tattoo,
         tag: 'Studio tatuażu · York',
-        body: 'Nowe prace trafiają do galerii w minutę i ładują się szybko nawet na telefonie.',
-        feats: ['Galeria z filtrami', 'Rezerwacje', 'Wersja na telefon'],
+        body: 'Klient najpierw widzi styl, a dopiero potem pyta o termin. Galerię artystka uzupełnia sama, w kilka minut.',
         alt: 'Strona Adrianna Urban Tattoos, przewijana od góry do dołu',
       },
     ],
@@ -185,11 +182,16 @@ export const dictionaries: Record<Locale, Dict> = {
     pricesSub: 'Każdą stronę wyceniam indywidualnie. Te widełki pomogą Ci się zorientować.',
     // TODO: wpisać kwoty przed publikacją.
     prices: [
-      { name: 'Wizytówka', from: 'od', amount: '… zł', body: 'Jedna strona z ofertą, kontaktem i mapą dojazdu.' },
+      {
+        name: 'Wizytówka',
+        from: '',
+        amount: '500–1500 zł',
+        body: 'Jedna strona z ofertą, kontaktem i mapą dojazdu. Z formularzem kontaktowym bliżej górnej granicy.',
+      },
       {
         name: 'Strona firmowa',
-        from: 'od',
-        amount: '… zł',
+        from: '',
+        amount: 'Wycena',
         body: 'Kilka sekcji, galeria lub realizacje i panel do samodzielnej edycji.',
         popular: true,
       },
@@ -254,15 +256,13 @@ export const dictionaries: Record<Locale, Dict> = {
       {
         ...genz,
         tag: 'Marketing agency · Warsaw',
-        body: 'The team edits the site themselves. New content goes live in minutes, no developer call needed.',
-        feats: ['Editing panel', 'Hero video', 'Client logos'],
+        body: "A site that presents the agency's offer before the first call. The team adds new projects themselves, the same day.",
         alt: 'The Generation Z Agency website, scrolling from top to bottom',
       },
       {
         ...tattoo,
         tag: 'Tattoo studio · York',
-        body: 'New work lands in the gallery in a minute and loads fast even on a phone.',
-        feats: ['Filterable gallery', 'Bookings', 'Mobile-ready'],
+        body: 'Clients see the style first, then ask about a booking. The artist updates the gallery herself, in minutes.',
         alt: 'The Adrianna Urban Tattoos website, scrolling from top to bottom',
       },
     ],
@@ -288,11 +288,16 @@ export const dictionaries: Record<Locale, Dict> = {
     pricesSub: 'Every site is priced individually. These ranges will help you get a feel for it.',
     // TODO: fill in amounts before publishing.
     prices: [
-      { name: 'One-pager', from: 'from', amount: 'PLN …', body: 'A single page with your offer, contact details and a map.' },
+      {
+        name: 'One-pager',
+        from: '',
+        amount: 'PLN 500–1,500',
+        body: 'A single page with your offer, contact details and a map. With a contact form, closer to the upper end.',
+      },
       {
         name: 'Business website',
-        from: 'from',
-        amount: 'PLN …',
+        from: '',
+        amount: 'Custom',
         body: 'Several sections, a gallery or case studies, and a panel to edit it yourself.',
         popular: true,
       },
